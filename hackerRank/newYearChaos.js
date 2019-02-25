@@ -1,32 +1,28 @@
+// Hackerrank New Year Chaos Problem
+// https://www.hackerrank.com/challenges/new-year-chaos/problem?
+
+// Works!
 function minimumBribes(q) {
   let bribes = 0;
-  isChaotic = false;
-  const bribeCounter = q.map((item, i) => {
-    if (item > i + 3) {
-      isChaotic = true;
-      return isChaotic;
-    } else if (item >= i + 1) {
-      bribes = bribes + (item - (i + 1));
-    } else if (item === i - 3) {
-      bribes++;
+  for (let i = q.length; i-- > 0; ) {
+    if (q[i] - (i + 1) > 2) {
+      bribes = "Too chaotic";
+      break;
     }
-    return bribes;
-  });
-  if (!isChaotic) {
-    console.log(bribes);
-  } else {
-    console.log("Too chaotic");
+    for (let j = Math.max(q[i]) - 2; j < i; j++) {
+      if (q[j] > q[i]) {
+        bribes++;
+      }
+    }
   }
+  console.log(bribes);
 }
 let test = [5, 1, 2, 3, 7, 8, 6, 4];
 
 let test2 = [1, 2, 5, 3, 7, 8, 6, 4];
-//          [1, 2, 3, 4, 5, 6, 7, 8];
-//          0, 0, 2, -1, 2, 2, -1, -4;
+
 minimumBribes(test);
 minimumBribes(test2);
-// [1, 2, 5, 3, 4, 7, 8, 6];
-// 6;
 
 // reduce function
 // const bribeCount = q.reduce((bribes, num, i) => {

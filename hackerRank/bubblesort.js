@@ -18,7 +18,7 @@ function countSwaps(a) {
       }
     }
     lastEl--;
-    console.log(arr);
+    console.log(swaps);
   }
   console.log(`Array is sorted in ${swaps} swaps.`);
   console.log(`First Element: ${a[0]}`);
